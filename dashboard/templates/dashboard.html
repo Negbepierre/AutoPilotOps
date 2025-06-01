@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoPilotOps Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        .scale_up { background-color: #d4edda; }
+        .no_action { background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>📊 AutoPilotOps Decision Dashboard</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Decision</th>
+                <th>Proposals</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in history %}
+            <tr class="{{ entry.decision }}">
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.decision }}</td>
+                <td>
+                    {% for p in entry.proposals %}
+                        <div><b>{{ p.service }}</b>: {{ p.proposal }} – {{ p.reason }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

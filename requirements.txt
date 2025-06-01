@@ -1,0 +1,8 @@
+flask
+flask-cors
+transformers
+torch
+boto3
+redis
+psycopg2-binary
+python-dotenv
